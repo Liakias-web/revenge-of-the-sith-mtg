@@ -1,0 +1,112 @@
+/* Old Republic multiplayer screens (lobby, chat, online draft, event hub). Uses css/base.css variables. */
+.mp-root { position: absolute; inset: 0; overflow: hidden; }
+.mp-main { position: absolute; inset: 0; }
+.mp-screen { background: radial-gradient(ellipse at 50% 0%, #1c2633 0%, var(--bg) 70%); }
+.mp-header .mp-conn { font-size: 12px; margin-right: 6px; }
+.mp-pad { padding: 10px 12px; }
+.mp-small { font-size: 12px; line-height: 1.4; margin: 4px 0; }
+.mp-error { padding: 20px; color: var(--danger); }
+.mp-row { display: flex; gap: 6px; align-items: center; }
+.mp-row input { flex: 1 1 auto; min-width: 0; }
+.mp-card { margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.45); }
+.mp-card.mp-hl { border-color: var(--accent); }
+.mp-box { width: 520px; max-width: 96vw; box-shadow: 0 6px 24px rgba(0,0,0,.6); }
+.mp-box.wide { width: 720px; }
+.mp-box p { padding: 0 16px; }
+.mp-note { color: #f3d58a; }
+
+/* ---- connect screen */
+.mp-connect-body { flex: 1 1 auto; overflow: auto; padding: 18px max(16px, calc(50% - 520px)); }
+.mp-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 860px) { .mp-cols { grid-template-columns: 1fr; } }
+.mp-cols .mp-card { margin-bottom: 0; }
+.mp-name { width: 260px; font-size: 15px; padding: 6px 8px; }
+.mp-opt { padding: 8px 0 12px; border-bottom: 1px solid rgba(109,137,168,.25); }
+.mp-opt:last-child { border-bottom: 0; }
+.mp-opt-title { font-weight: 600; color: #e9dcbc; margin-bottom: 4px; font-size: 14px; }
+.mp-opt > button { margin-top: 6px; }
+.mp-code { width: 100%; font-family: Consolas, "Courier New", monospace; font-size: 11px; background: #0b1016; color: #cfe0f0; border: 1px solid var(--border); border-radius: var(--radius); padding: 6px; resize: vertical; user-select: text; word-break: break-all; }
+.mp-addr { font-size: 14px; }
+
+/* ---- lobby */
+.mp-lobby-body { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: minmax(260px, 1fr) minmax(320px, 1.25fr) minmax(280px, 0.9fr); gap: 12px; padding: 12px; overflow: auto; }
+@media (max-width: 1100px) { .mp-lobby-body { grid-template-columns: 1fr 1fr; } .mp-chatcol { display: none; } }
+.mp-lobby-col { min-width: 0; }
+.mp-players { padding: 6px; }
+.mp-player { display: flex; align-items: center; gap: 6px; padding: 5px 6px; border-radius: 3px; }
+.mp-player.me { background: rgba(224,176,74,.12); }
+.mp-player .mp-pname { font-weight: 600; }
+.mp-pdeck { font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px; }
+.mp-badge { font-size: 10px; text-transform: uppercase; letter-spacing: .05em; background: #6b4f1c; border: 1px solid var(--accent); color: #fff3d6; border-radius: 3px; padding: 0 4px; }
+.mp-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #666; flex: 0 0 auto; }
+.mp-dot.on { background: var(--ok); box-shadow: 0 0 4px var(--ok); }
+.mp-dot.off { background: var(--danger); }
+.mp-dot.ai { background: var(--accent-2); }
+button.mini { padding: 1px 7px; font-size: 11px; }
+.mp-settings .mp-set-row { display: grid; grid-template-columns: 130px 1fr; align-items: center; gap: 4px 8px; margin-bottom: 8px; }
+.mp-settings .mp-set-row .mp-small { grid-column: 2; margin: 0; }
+.mp-settings label { color: var(--text-dim); }
+.mp-start { font-size: 15px; padding: 8px 20px; }
+.mp-urls { margin: 6px 0; }
+.mp-url { font-family: Consolas, "Courier New", monospace; font-size: 15px; color: #f3e2b4; user-select: text; padding: 2px 0; }
+.mp-invites .mp-code { margin: 4px 0; }
+
+/* ---- floating chat */
+.mp-chat { position: absolute; right: 10px; bottom: 10px; width: 320px; z-index: 4000; background: linear-gradient(var(--panel-2), var(--panel)); border: 1px solid var(--border-hi); border-radius: var(--radius); box-shadow: 0 6px 22px rgba(0,0,0,.7); display: flex; flex-direction: column; }
+.mp-root[data-screen="lobby"] .mp-chat { top: 52px; bottom: 12px; right: 12px; width: min(28vw, 420px); }
+@media (max-width: 1100px) { .mp-root[data-screen="lobby"] .mp-chat { top: auto; height: 300px; } }
+.mp-chat-head { display: flex; align-items: center; gap: 6px; padding: 4px 8px; cursor: pointer; background: linear-gradient(#34465c, #1f2a37); border-bottom: 1px solid var(--border); font-weight: 600; color: #c9d6e4; }
+.mp-chat-badge { background: var(--danger); color: #fff; border-radius: 8px; padding: 0 6px; font-size: 11px; }
+.mp-chat-body { display: flex; flex-direction: column; height: 220px; }
+.mp-root[data-screen="lobby"] .mp-chat-body { height: auto; flex: 1 1 auto; min-height: 0; }
+.mp-chat.collapsed .mp-chat-body { display: none; }
+.mp-chat.collapsed { width: 150px; }
+.mp-chat-log { flex: 1 1 auto; overflow-y: auto; padding: 4px 8px; font-size: 12.5px; user-select: text; }
+.mp-chat-line { padding: 1px 0; word-wrap: break-word; }
+.mp-chat-line.sys { color: var(--text-dim); font-style: italic; }
+.mp-chat-line.mine b { color: var(--accent); }
+.mp-chat-input { margin: 4px; }
+.mp-root[data-screen="live"] .mp-chat, .mp-root[data-screen="activity"] .mp-chat { bottom: 6px; right: 6px; opacity: .97; }
+
+/* ---- banner */
+.mp-banner { position: absolute; top: 44px; left: 50%; transform: translateX(-50%); z-index: 4500; padding: 6px 16px; border-radius: 4px; background: rgba(40,30,10,.95); border: 1px solid var(--accent); color: #f6e7c0; box-shadow: 0 4px 14px #000; }
+.mp-banner.warn { border-color: var(--danger); background: rgba(60,16,16,.95); }
+
+/* ---- live match */
+.mp-overlay { position: absolute; inset: 0; z-index: 3500; background: rgba(0,0,0,.55); display: flex; align-items: center; justify-content: center; }
+.mp-overlay-box { width: 460px; max-width: 94vw; box-shadow: 0 10px 40px #000; }
+.mp-overlay-text { padding: 14px 16px; line-height: 1.45; }
+.mp-match .mp-small { font-size: 11px; margin-right: 8px; }
+
+/* ---- online draft */
+.mp-draft-body { flex: 1 1 auto; min-height: 0; display: flex; gap: 8px; padding: 8px; }
+.mp-draft-main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.mp-packwrap { flex: 1 1 58%; min-height: 0; display: flex; flex-direction: column; }
+.mp-pickswrap { flex: 1 1 42%; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+.mp-picks-cols { flex: 1 1 auto; overflow: auto; }
+.mp-draft-side { flex: 0 0 300px; min-width: 0; overflow: auto; }
+.mp-pack { flex: 1 1 auto; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; padding: 8px; align-content: start; }
+.mp-pcard { cursor: pointer; border: 2px solid transparent; border-radius: 6px; transition: transform .08s; }
+.mp-pcard img { width: 100%; display: block; border-radius: 5px; aspect-ratio: 5 / 7; object-fit: cover; }
+.mp-pcard:hover { transform: translateY(-2px); border-color: var(--accent-2); }
+.mp-pcard.selected { border-color: var(--accent); box-shadow: 0 0 10px var(--accent); }
+.mp-pcard.faded { opacity: .35; }
+.mp-draft-status { padding: 4px 10px; border-top: 1px solid var(--border); min-height: 24px; }
+.mp-timer { font-weight: 700; color: #f2e2b6; margin-right: 6px; }
+.mp-timer.urgent { color: var(--danger); }
+.mp-pickno { font-weight: 600; color: #f0e6cf; }
+
+/* ---- event hub */
+.mp-hub-body { flex: 1 1 auto; min-height: 0; overflow: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px 12px 60px; }
+@media (max-width: 960px) { .mp-hub-body { grid-template-columns: 1fr; } }
+.mp-hub-col > .panel { margin-bottom: 12px; }
+.mp-hub-mebody { padding: 10px 14px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.mp-hub-pair { font-size: 16px; font-weight: 600; color: #f1e7cf; }
+.mp-hub-me .final-place { font-size: 40px; margin-top: 0; }
+.mp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.mp-table th, .mp-table td { padding: 4px 8px; border-bottom: 1px solid rgba(109,137,168,.18); text-align: left; }
+.mp-table th { color: var(--text-dim); font-weight: 600; }
+.mp-table tr.me td { background: rgba(224,176,74,.12); }
+.mp-table td.mp-score { font-weight: 700; color: var(--accent); white-space: nowrap; }
+.mp-seat { padding: 3px 10px; display: flex; align-items: center; gap: 6px; }
+.mp-seat.me { color: var(--accent); }

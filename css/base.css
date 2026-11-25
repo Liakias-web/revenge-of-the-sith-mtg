@@ -1,0 +1,65 @@
+/* Revenge of the Sith shared theme: MTGO (c. 2012) client chrome evolved for Porcelain & Gilt /
+ * Imperial Eclipse — deep obsidian-navy chrome, gilt gold, crimson-rose Sith accents and kyber cyan. */
+:root {
+  --bg: #0c0d14;
+  --bg-2: #12141e;
+  --panel: #161824;
+  --panel-2: #1e2130;
+  --panel-hi: #292d40;
+  --border: #3a3f56;
+  --border-hi: #6e7596;
+  --text: #ebe8e1;
+  --text-dim: #9ba0b2;
+  --accent: #e2b24c;          /* gilt gold highlight (selection, your turn) */
+  --accent-2: #3fb6c6;        /* kyber cyan highlight (Force, playable) */
+  --crimson: #c94848;         /* crimson-rose Sith / Dark Side accent */
+  --crimson-dim: #7a262c;
+  --lapis: #1e2742;
+  --lapis-2: #2c385e;
+  --turq: #3fb6c6;
+  --danger: #d9534f;
+  --ok: #5cb85c;
+  --attack: #df5442;
+  --block: #3a8fe0;
+  --target: #f0d000;
+  --font-ui: "Segoe UI", Tahoma, Verdana, Arial, sans-serif;
+  --font-card: "IM Fell English", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-rules: "Liberation Serif", "Times New Roman", Times, serif;
+  --radius: 4px;
+  --mana-W: #f8f3d6; --mana-U: #a9d3f0; --mana-B: #b7aaa6; --mana-R: #f2a07f; --mana-G: #9fd3a4; --mana-C: #cfcfcf;
+  /* subtle gilt lattice overlay on headers */
+  --tile: repeating-linear-gradient(45deg, rgba(226,178,76,.06) 0 1px, transparent 1px 9px),
+          repeating-linear-gradient(-45deg, rgba(226,178,76,.06) 0 1px, transparent 1px 9px);
+  /* porcelain & gilt filigree lattice for the title treatment */
+  --mirror-tile: repeating-linear-gradient(45deg, rgba(226,178,76,.08) 0 1px, transparent 1px 11px),
+          repeating-linear-gradient(-45deg, rgba(201,72,72,.06) 0 1px, transparent 1px 11px);
+  --silver: #ece6d8;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); font-family: var(--font-ui); font-size: 13px; overflow: hidden; user-select: none; }
+button { font-family: var(--font-ui); font-size: 13px; color: var(--text); background: linear-gradient(#2d3247, #1c1f2e); border: 1px solid var(--border-hi); border-radius: var(--radius); padding: 5px 12px; cursor: pointer; }
+button:hover:not(:disabled) { background: linear-gradient(#3a405a, #24283b); border-color: #b8a77f; }
+button:active:not(:disabled) { background: linear-gradient(#1c1f2e, #2d3247); }
+button:disabled { opacity: 0.45; cursor: default; }
+button.primary { background: linear-gradient(#cc9a3c, #8a6420); border-color: #f0c870; color: #fff; }
+button.primary:hover:not(:disabled) { background: linear-gradient(#e0b452, #9a7428); }
+input, select { font-family: var(--font-ui); font-size: 13px; background: #0e1018; color: var(--text); border: 1px solid var(--border); border-radius: var(--radius); padding: 4px 6px; }
+.panel { background: linear-gradient(var(--panel-2), var(--panel)); border: 1px solid var(--border); border-radius: var(--radius); }
+.titlebar { background: var(--tile), linear-gradient(#2a2e42, #181a27); border-bottom: 1px solid rgba(226,178,76,.4); padding: 4px 8px; font-weight: 600; color: #e8e0cf; }
+.dim { color: var(--text-dim); }
+.hidden { display: none !important; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0e1018; }
+::-webkit-scrollbar-thumb { background: #3a3f56; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #525978; }
+/* Mana symbols rendered in text: <span class="ms ms-W">W</span> */
+.ms { display: inline-flex; align-items: center; justify-content: center; width: 1.25em; height: 1.25em; border-radius: 50%; font-size: 0.8em; font-weight: 700; color: #111; border: 1px solid rgba(0,0,0,.5); margin: 0 1px; vertical-align: -0.15em; font-family: var(--font-ui); box-sizing: border-box; }
+.ms-W { background: var(--mana-W); } .ms-U { background: var(--mana-U); } .ms-B { background: var(--mana-B); }
+.ms-R { background: var(--mana-R); } .ms-G { background: var(--mana-G); } .ms-C, .ms-N { background: var(--mana-C); }
+.ms-T { background: #ccc; }
+/* Hybrid {W/B}: a circle split on the diagonal, one small letter in each half. */
+.ms-hy { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--c1) 0 50%, var(--c2) 50% 100%); }
+.ms-hy::after { content: ''; position: absolute; left: -10%; top: 50%; width: 120%; height: 1px; background: rgba(0,0,0,.45); transform: rotate(-45deg); }
+.ms-hy .ms-h1, .ms-hy .ms-h2 { position: absolute; font-size: .62em; line-height: 1; font-weight: 800; }
+.ms-hy .ms-h1 { left: 13%; top: 9%; }
+.ms-hy .ms-h2 { right: 13%; bottom: 9%; }

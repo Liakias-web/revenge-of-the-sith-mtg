@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revenge of the Sith — Fan Set Client</title>
+<meta name="description" content="Free, non-commercial Star Wars fan-made Magic expansion (120 cards, 2006–09 power level) playable directly in your browser: 8-player AI Booster Draft, Sealed, 8 Theme Decks, Force counters, Compromise, and Light/Dark Side flip cards.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Revenge of the Sith — Custom 120-Card Fan Expansion">
+<meta property="og:description" content="Play 8-player Booster Draft, Sealed Deck, 8 Theme Decks, and online multiplayer directly in your browser. Inspired by 2006–09 Magic design with Porcelain & Gilt card frames.">
+<meta property="og:image" content="assets/ui/social-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Revenge of the Sith — Custom 120-Card Fan Expansion">
+<meta name="twitter:description" content="Free browser-playable 120-card Star Wars fan set inspired by 2006–09 Magic. Draft vs AI, play 8 theme decks, or duel friends online.">
+<meta name="twitter:image" content="assets/ui/social-preview.jpg">
+<link rel="icon" href="assets/ui/icon.png">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/game.css">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/mp.css">
+</head>
+<body>
+<div id="app"></div>
+<!-- data + engine -->
+<script src="js/data/cards-data.js"></script>
+<script src="js/data/theme-decks.js"></script>
+<script src="js/engine/util.js"></script>
+<script src="js/engine/engine.js"></script>
+<script src="js/engine/cards.js"></script>
+<script src="js/engine/cards1.js"></script>
+<script src="js/engine/cards2.js"></script>
+<script src="js/engine/cards3.js"></script>
+<script src="js/engine/cards4.js"></script>
+<script src="js/ai/ai.js"></script>
+<!-- game table UI -->
+<script src="js/ui/card-ui.js"></script>
+<script src="js/ui/game-table.js"></script>
+<!-- app: menus, draft, sealed, deck building, events -->
+<script src="js/app/common.js"></script>
+<script src="js/app/ratings.js"></script>
+<script src="js/app/draft.js"></script>
+<script src="js/app/deckbuilder.js"></script>
+<script src="js/app/events.js"></script>
+<script src="js/app/app.js"></script>
+<!-- multiplayer (owned by the multiplayer module) -->
+<!-- MP-SCRIPTS-BEGIN -->
+<script src="js/net/net.js"></script>
+<script src="js/net/relay.js"></script>
+<script src="js/net/webrtc.js"></script>
+<script src="js/mp/protocol.js"></script>
+<script src="js/mp/sync.js"></script>
+<script src="js/mp/event-mp.js"></script>
+<script src="js/mp/lobby.js"></script>
+<!-- MP-SCRIPTS-END -->
+<script>
+/* RevengeOfTheSith.exe serves the app on 127.0.0.1 and quits when the page stops pinging. */
+if (location.protocol === 'http:' && location.hostname === '127.0.0.1') {
+  setInterval(function () { fetch('/__ping', { cache: 'no-store' }).catch(function () {}); }, 5000);
+}
+</script>
+</body>
+</html>

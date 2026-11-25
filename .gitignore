@@ -1,0 +1,10 @@
+# OS & editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Packaged binaries & archives belong in GitHub Releases, not git history
+*.zip
+*.exe
+*.bat
